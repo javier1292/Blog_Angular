@@ -1,0 +1,60 @@
+<div class="container  pt-4">
+    <div class="header">
+        <H1 class="text-center pt-3">
+            Formulario de Registro
+        </H1>
+
+    </div>
+    <hr>
+
+    <form action="" class="pl-5 ml-5" #Rgistro="ngForm" (ngSubmit)="onSubmit(Rgistro)">
+        <div class="row pl-5">
+            <div class="col-5  form-group">
+                <label class="lal " for="">Nombre</label>
+                <input class="col-12 form-control " id="Nombre" type="text" #Name="ngModel" [(ngModel)]="user.Nombre"
+                    name="Nombre" required pattern="[a-z A-Z]+">
+                <small *ngIf="!Name.valid && Name.touched" class="invalid-feedback d-block">
+                    Nombre no es valido
+                </small>
+            </div>
+            <div class="col-5 form-group mb-4">
+                <label class="lal " for="">Apellido</label>
+                <input class="col-12 form-control" id="Apellido" type="text" #Apellido="ngModel"
+                    [(ngModel)]="user.Apellido" name="Apellido" required pattern="[a-z A-Z]+">
+                <small *ngIf="!Apellido.valid && Apellido.touched" class="invalid-feedback d-block">
+                    Apellido no es valido
+                </small>
+            </div>
+            <div class="col-10 form-group mb-4">
+                <label class="lal" for="">Correo Electronico</label>
+                <input class=" col-12 form-control " id="Email" type="text" #Email="ngModel" [(ngModel)]="user.Email"
+                    name="Email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+                <small *ngIf="!Email.valid && Email.touched" class="invalid-feedback d-block">
+                    Email no es valido
+                </small>
+            </div>
+            <div class="col-5 form-group">
+                <label class="lal" for="Contraseña">Contraseña</label>
+                <input class=" col-12 form-control mb-4" id="Contraseña" type="password" #Password="ngModel"
+                    [(ngModel)]="user.Password" name="password">
+                <small *ngIf="!Password.valid && Password.touched" class="invalid-feedback d-block">
+                    Contraseña no es valido
+                </small>
+            </div>
+            <input type="submit" class="mb-5 ml-5 mt-3 form-control btn btn-success col-9 " value="Completar" [disabled]="Rgistro.invalid">
+        </div>
+    </form>
+</div>
+<h1 class="text-center pt-4">
+    Aviso
+</h1>
+<div class=" container aviso col-5 form-group">
+    <p class=" aviso">
+        confirme que no se equivoco
+        al digitar
+        la Contraseña apretando
+        el boton
+        que tiene dicho campo para ver
+        lo que tiene escrito
+    </p>
+</div>
