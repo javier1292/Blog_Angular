@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { User } from 'src/app/models/user';
 import { SevicioUsuario } from 'src/app/Services/user.service';
 
@@ -11,6 +12,7 @@ import { SevicioUsuario } from 'src/app/Services/user.service';
 export class RegistroComponent implements OnInit {
   public Registro_Title: string;
   public user:User;
+  public status: string;
 
   constructor(
 
@@ -24,9 +26,21 @@ export class RegistroComponent implements OnInit {
   }
 
   onSubmit(Form:any){
-   console.log(this.user);
-   console.log(this._ServicioUsuario.test)
-   Form.reset();
+   this._ServicioUsuario.Rgistro(this.user).subscribe(
+    Response => {
+      if(Response.status == "success"){
+        this.status = Response.status;
+        console.log(Response);
+        Form.reset();
+      }else{
+        this.status = 'error';
+      }
+    },
+    error => {this.status = 'error';
+      console.log(<any>error);
+    }
+   );
+  
   }
-
+ 
 }

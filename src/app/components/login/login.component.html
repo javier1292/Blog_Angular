@@ -1,24 +1,29 @@
-  <div class="container">
-        <a class="titulo">
-            <img src="../assets/imagenes/redes.png" alt="">
-            <label for="">JSocial</label>
-        </a>
-        <div class="content">
+<div class="container">
+    <a class="titulo">
+        <img src="../assets/imagenes/redes.png" alt="">
+        <label for="">JSocial</label>
+    </a>
+    <div class="content">
 
+        <form action="" #login="ngForm" (ngSubmit)="onSubmit(login)">
             <label for="Nombre">Nombre de usuario</label>
             <div class="formG">
-                <input type="text" name="username" id="username" placeholder=" ">
+                <input type="text" name="Email" id="Email" placeholder=" " [(ngModel)]="User.Email" required
+                    pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
             </div>
             <br>
             <label for="Contraseña">Contraseña</label>
             <div class="formG">
-                <input type="password" name="password" id="password" placeholder=" ">
+                <input type="password" name="password" id="password" placeholder=" " [(ngModel)]="User.Password"
+                    required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
             </div>
             <br>
             <a href="">A olvidado su Contraseña</a>
             <br>
-            
-            <input class="btn" type="button" value="ENTRAR" id="submit" />
 
-        </div>
+            <input class="btn " type="submit" value="ENTRAR" id="" />
+
+        </form>
+
     </div>
+</div>

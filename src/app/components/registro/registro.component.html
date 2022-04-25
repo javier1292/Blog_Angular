@@ -1,3 +1,11 @@
+<div class="alert alert-success container" *ngIf="status == 'success'">
+    <p>Usuario creado correctamente </p>
+    <a  [routerLink]="['/login']">Iniciar seccion aqui!!</a>
+</div>
+<div class="alert alert-danger container"  *ngIf="status == 'error'">
+    <p>Algo fallo en el registro</p>
+    <a [routerLink]="['/login']"></a>
+</div>
 <div class="container  pt-4">
     <div class="header">
         <H1 class="text-center pt-3">
