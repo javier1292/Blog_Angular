@@ -1,0 +1,67 @@
+<div class="alert alert-success container center" *ngIf="status == 'success'">
+    <p>Usuario editado correctamente </p>
+
+</div>
+<div class="alert alert-danger container" *ngIf="status == 'error'">
+    <p>No se pudo editar el usuario</p>
+
+</div>
+<div class="container  pt-4">
+    <div class="header">
+        <H1 class="text-center pt-3">
+            Modifica tus datos de usuario
+        </H1>
+    </div>
+    <hr>
+    <form action="" class="pl-5 ml-5" #Ajustes="ngForm" (ngSubmit)="onSubmit(Ajustes)">
+        <div class="row pl-5">
+            <div class="col-5  form-group">
+                <label class="lal " for="">Nombre</label>
+                <input class="col-12 form-control " id="Nombre" type="text" #Name="ngModel" [(ngModel)]="User.Nombre"
+                    name="Nombre" required pattern="[a-z A-Z]+">
+                <small *ngIf="!Name.valid && Name.touched" class="invalid-feedback d-block">
+                    Nombre no es valido
+                </small>
+            </div>
+            <div class="col-5 form-group mb-4">
+                <label class="lal " for="">Apellido</label>
+                <input class="col-12 form-control" id="Apellido" type="text" #Apellido="ngModel"
+                    [(ngModel)]="User.Apellido" name="Apellido" required pattern="[a-z A-Z]+">
+                <small *ngIf="!Apellido.valid && Apellido.touched" class="invalid-feedback d-block">
+                    Apellido no es valido
+                </small>
+            </div>
+
+            <div class="col-10 form-group mb-4">
+                <label class="lal" for="">Correo Electronico</label>
+                <input class=" col-12 form-control " id="Email" type="text" #Email="ngModel" [(ngModel)]="User.Email"
+                    name="Email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+                <small *ngIf="!Email.valid && Email.touched" class="invalid-feedback d-block">
+                    Email no es valido
+                </small>
+            </div>
+
+            <div class="col-5 form-group mb-4">
+
+                <label class="lal " for="Descripcion">Descripcion</label>
+
+                <textarea class="col-12 form-control" id="Descripcion" type="text" #Descripcion="ngModel"
+                    [(ngModel)]="User.Descripcion" name="Descripcion" [froalaEditor]="forala_options"> </textarea>
+
+                <small *ngIf="!Descripcion.valid && Descripcion.touched" class="invalid-feedback d-block">
+                    Descripcion no es valida
+                </small>
+            </div>
+
+            <div class="col-5 form-group mb-4">
+                <label class="lal " for="">Imagen</label>
+                <angular-file-uploader #fileUpload1 [config]="afuConfig" [resetUpload]="true"
+                    (ApiResponse)="Avatar($event)">
+                </angular-file-uploader>
+            </div>
+
+            <input type="submit" class="mb-5 ml-5 mt-3 form-control btn btn-success col-9" value="Guardar Cambios"
+                [disabled]="Ajustes.invalid">
+        </div>
+    </form>
+</div>

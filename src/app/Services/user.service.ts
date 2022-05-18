@@ -64,5 +64,14 @@ export class SevicioUsuario{
 
     }
 
+    update(token, User):Observable<any>{
+        let json = JSON.stringify(User);
+        let params = "json="+json;
+
+        let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                                       .set('Authorization',token);
+        return this._http.put(this.url +'user/update',params,{headers:headers});
+    }
+
     
 }
